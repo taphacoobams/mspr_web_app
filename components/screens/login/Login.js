@@ -8,6 +8,12 @@ export default class Login extends React.Component {
         mail: '',
         pwd: ''
     }
+    // Exemple du prof : 
+    // componentDidMount(){
+    //     if(this.props.parametre==true)
+    //         alert("test")
+    // }
+
     handleMail = (text) => {
         this.setState({ mail: text})
     }
@@ -34,14 +40,16 @@ export default class Login extends React.Component {
                     keyboardType="password">
                 </TextInput>
                 <Button
+                    onPress={() => this.props.navigation.navigate('Accueil')}
                     title="Connexion">
                 </Button>
-                    <Text style={style.text}>Or</Text>
+                    <Text style={style.text}>Ou</Text>
                 <Button
                     color= "#FF5C2C"
                     title="Google"
                     onPress={() => {Linking.openURL("https://accounts.google.com/v3/signin/identifier?dsh=S218827057%3A1675598504973842&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%26ogbl%2F&emr=1&ltmpl=default&ltmplcache=2&osid=1&passive=true&rm=false&scc=1&service=mail&ss=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=AWnogHcJGIJLEhpSlA_mmu4UiWKuQ5mYyRyt1y9lqD2oubTGsnMmpPHoyTBCracfXbtxF1THsUXdKg")}}>
                 </Button>
+                <Text style={style.text}>{"\n"}Inscription</Text>
             </View>
             
         )
