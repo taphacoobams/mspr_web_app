@@ -8,12 +8,6 @@ export default class Login extends React.Component {
         mail: '',
         pwd: ''
     }
-    // Exemple du prof : 
-    // componentDidMount(){
-    //     if(this.props.parametre==true)
-    //         alert("test")
-    // }
-
     handleMail = (text) => {
         this.setState({ mail: text})
     }
@@ -40,7 +34,7 @@ export default class Login extends React.Component {
                     keyboardType="password">
                 </TextInput>
                 <Button
-                    onPress={() => this.props.navigation.navigate('Accueil')}
+                    onPress={() => this.loginHome()}
                     title="Connexion">
                 </Button>
                     <Text style={style.text}>Ou</Text>

@@ -1,36 +1,36 @@
 import React from 'react';
-import 'react-native-gesture-handler';
-import { View, StyleSheet } from 'react-native';
 import Accueil from './components/screens/accueil/Accueil';
-import Login from './components/screens/login/Login';
+import Profils from './components/screens/profils/Profils';
+import Map from './components/screens/carte/Map';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Stack = createStackNavigator();
+const tab = createBottomTabNavigator();
 
 export default class App extends React.Component {
     render() {
     return (
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Login"
-              component={Login}
-            />
-            <Stack.Screen
-              name="Accueil"
-              component={Accueil}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
+      <NavigationContainer>
+          <tab.Navigator
+            screenOptions={({route}) => ({
+              tabBarIcon: ({focused, color, size}) => {
+                let iconName;
+                if (route.name == "Accueil"){
+                  iconName = "home"
+                } else if (route.name == "Map"){
+                  iconName = "map"
+                } else if (route.name == "Profils"){
+                  iconName = "person"
+                }
+                return <Ionicons name={iconName} size={25} color="#3CB371" />
+              }
+            })}>
+            <tab.Screen name='Accueil' component={Accueil}/>
+            <tab.Screen name='Map' component={Map}/>
+            <tab.Screen name='Profils' component={Profils}/>
+          </tab.Navigator>
+      </NavigationContainer>
     )
   }
 }
-const style = StyleSheet.create({
-  view: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-
-  }
-})
